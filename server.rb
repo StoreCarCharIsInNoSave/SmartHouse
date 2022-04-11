@@ -6,7 +6,7 @@ server = TCPServer.new('192.168.0.104',7760)
 
 def poweroff(client)
   puts %x[shutdown now 2>&1] if OS.linux?
-  puts `"shutdown /s"` if OS.windows?
+  system 'shutdown /s /t 0' if OS.windows?
 end
 
 while client = server.accept
