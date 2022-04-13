@@ -1,6 +1,8 @@
 require 'socket'
 require 'os'
-server = TCPServer.new('192.168.0.104',7760)
+
+ipv4 = Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.ip_address
+server = TCPServer.new(ipv4,7760)
 
 
 
